@@ -3,9 +3,11 @@
 # to build the application
 mvn install
 
-# to build the docker image of the application
-
+# build with docker
 docker build -t sample/team-mgmnt-docker .
 
-# to rund application with docker
+# running app with docker
 docker run --rm --name team-mgmnt -p 8090:8080 sample/team-mgmnt-docker
+
+# running app and mysql database with docker-compose
+docker-compose up --build
