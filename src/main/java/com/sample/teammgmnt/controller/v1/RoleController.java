@@ -4,8 +4,11 @@ import com.sample.teammgmnt.business.role.RoleService;
 import com.sample.teammgmnt.controller.v1.dto.RoleListDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -28,6 +31,18 @@ public class RoleController {
     return ResponseEntity.ok("this test was a success");
   }
 
+  @PostMapping
+  public ResponseEntity<String> add(@RequestParam String roleName) {
+    String response = roleService.save(roleName);
+    return ResponseEntity.ok(response);
+  }
+
+  @DeleteMapping
+  public ResponseEntity<String> remove(@RequestParam String roleName) {
+    String response = roleService.delete(roleName);
+    return ResponseEntity.ok(response);
+  }
+
   @GetMapping
   public ResponseEntity<List<RoleListDTO>> listAll() {
     List<RoleListDTO> dtos = roleService.listAll().stream()
@@ -35,7 +50,5 @@ public class RoleController {
             .collect(Collectors.toList());
     return ResponseEntity.ok(dtos);
   }
-
-
 
 }

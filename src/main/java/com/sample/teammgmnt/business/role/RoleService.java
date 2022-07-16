@@ -1,7 +1,6 @@
 package com.sample.teammgmnt.business.role;
 
 import com.sample.teammgmnt.business.ServiceHelper;
-import com.sample.teammgmnt.business.membership.MembershipRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
