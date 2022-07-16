@@ -1,6 +1,6 @@
 package com.sample.teammgmnt.controller.v1;
 
-import com.sample.teammgmnt.business.teamrole.TeamRoleService;
+import com.sample.teammgmnt.business.membership.MembershipService;
 import com.sample.teammgmnt.controller.v1.dto.MembershipDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,17 +16,17 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("membership")
 public class MembershipController {
-  private final TeamRoleService teamRoleService;
+  private final MembershipService membershipService;
   private final CustomModelMapper mapper;
 
-  public MembershipController(TeamRoleService teamRoleService, CustomModelMapper mapper) {
-    this.teamRoleService = teamRoleService;
+  public MembershipController(MembershipService membershipService, CustomModelMapper mapper) {
+    this.membershipService = membershipService;
     this.mapper = mapper;
   }
 
   @GetMapping
   public ResponseEntity<List<MembershipDTO>> listAll() {
-    List<MembershipDTO> list = teamRoleService.listAll().stream()
+    List<MembershipDTO> list = membershipService.listAll().stream()
             .map(row -> mapper.toMemberShipDTO(row))
             .collect(Collectors.toList());
     return ResponseEntity.ok(list);
@@ -36,7 +36,7 @@ public class MembershipController {
   public ResponseEntity<String> add(@RequestParam String teamID,
                                     @RequestParam String userID,
                                     @RequestParam(required = false) String roleID) {
-    String response = teamRoleService.save(teamID, userID, roleID);
+    String response = membershipService.save(teamID, userID, roleID);
     return ResponseEntity.ok(response);
   }
 
@@ -44,7 +44,7 @@ public class MembershipController {
   public ResponseEntity<String> remove(@RequestParam String teamID,
                                        @RequestParam String userID,
                                        @RequestParam String roleID) {
-    String response = teamRoleService.delete(teamID, userID, roleID);
+    String response = membershipService.delete(teamID, userID, roleID);
     return ResponseEntity.ok(response);
   }
 

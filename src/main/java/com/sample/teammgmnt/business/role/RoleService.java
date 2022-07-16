@@ -1,48 +1,69 @@
 package com.sample.teammgmnt.business.role;
 
-import com.sample.teammgmnt.business.teamrole.TeamRoleEntity;
-import com.sample.teammgmnt.controller.v1.dto.MembershipDTO;
-import com.sample.teammgmnt.controller.v1.dto.MembershipDTOBuilder;
-import com.sample.teammgmnt.business.teamrole.TeamRoleRepository;
+import com.sample.teammgmnt.business.ServiceHelper;
+import com.sample.teammgmnt.business.membership.MembershipRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 public class RoleService {
   private static final Logger LOGGER = LoggerFactory.getLogger(RoleService.class);
 
   private final RoleRepository roleRepository;
-  private final TeamRoleRepository teamRoleRepository;
+  private final ServiceHelper serviceHelper;
 
   @Autowired
-  public RoleService(RoleRepository roleRepository, TeamRoleRepository teamRoleRepository) {
+  public RoleService(RoleRepository roleRepository) {
     this.roleRepository = roleRepository;
-    this.teamRoleRepository = teamRoleRepository;
+    serviceHelper = new ServiceHelper();
+  }
+
+  public Optional<String> getRoleName(String id){
+    Optional<RoleEntity> one = roleRepository.findById(id);
+    return one.isPresent() ?
+            Optional.of(one.get().getName()) :
+            Optional.empty();
+  }
+  public Optional<String> getRoleID(String name) {
+    RoleEntity entity = RoleEntityBuilder.of()
+            .name(name)
+            .build();
+    Example<RoleEntity> example = Example.of(entity, serviceHelper.getFullScanExample());
+    Optional<RoleEntity> one = roleRepository.findOne(example);
+    return one.isPresent() ?
+            Optional.of(one.get().getId()) :
+            Optional.empty();
   }
 
   public List<RoleEntity> listAll() {
     return roleRepository.findAll();
   }
 
-  public List<MembershipDTO> findUserRoleList() {
-
-    return teamRoleRepository.findAll()
-            .stream()
-            .map(userEntity -> toDTO(userEntity))
-            .collect(Collectors.toList());
+  public String save(String name) {
+    if (getRoleID(name).isPresent()) {
+      return "Role name already registered. Nothing was done";
+    }
+    roleRepository.save(castRole(serviceHelper.generateUUID(), name));
+    return "New role registered with success";
   }
 
-  private MembershipDTO toDTO(TeamRoleEntity entity) {
-    return MembershipDTOBuilder.of()
-            .user(entity.getUserId())
-            .team(entity.getTeamId())
-            .user(entity.getUserId())
-            .build();
+  public String delete(String name) {
+    Optional<String> id = getRoleID(name);
+    if (id.isEmpty()) {
+      return "Role already deleted. Nothing was done";
+    }
+    roleRepository.deleteById(id.get());
+    return "New role deleted with success";
+  }
+
+  private RoleEntity castRole(String id, String name) {
+    return RoleEntityBuilder.of().id(id).name(name).build();
   }
 
 }

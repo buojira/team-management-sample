@@ -1,7 +1,7 @@
 package com.sample.teammgmnt.controller.v1;
 
 import com.sample.teammgmnt.business.team.TeamEntity;
-import com.sample.teammgmnt.business.teamrole.TeamRoleEntity;
+import com.sample.teammgmnt.business.membership.MembershipEntity;
 import com.sample.teammgmnt.business.user.UserEntity;
 import com.sample.teammgmnt.controller.v1.dto.MembershipDTO;
 import com.sample.teammgmnt.controller.v1.dto.MembershipDTOBuilder;
@@ -26,7 +26,7 @@ public class CustomModelMapper {
     return modelMapper.map(entity, UserListDTO.class);
   }
 
-  public MembershipDTO toMemberShipDTO(TeamRoleEntity row) {
+  public MembershipDTO toMemberShipDTO(MembershipEntity row) {
     return MembershipDTOBuilder.of()
             .team(row.getTeamId())
             .user(row.getUserId())
