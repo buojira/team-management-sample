@@ -1,11 +1,6 @@
-package com.sample.teammgmnt.user;
+package com.sample.teammgmnt.controller.v1;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity(name = "team_user")
-public class UserEntity {
-  @Id
+public class UserListDTO {
   private String id;
   private String firstName;
   private String lastName;
@@ -59,17 +54,5 @@ public class UserEntity {
 
   public void setLocation(String location) {
     this.location = location;
-  }
-
-  @Override
-  public String toString() {
-    return "UserEntity{" +
-            "id='" + id + '\'' +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", displayName='" + displayName + '\'' +
-            ", avatarUrl='" + avatarUrl + '\'' +
-            ", location='" + location + '\'' +
-            '}';
   }
 }

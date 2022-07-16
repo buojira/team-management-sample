@@ -1,6 +1,6 @@
 package com.sample.teammgmnt.controller.v1;
 
-import com.sample.teammgmnt.role.RoleService;
+import com.sample.teammgmnt.user.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,26 +11,21 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("role")
-public class RoleController {
+@RequestMapping("user")
+public class UserController {
 
-  private final RoleService roleService;
+  private final UserService userService;
   private final ModelMapper modelMapper;
 
-  public RoleController(RoleService roleService, ModelMapper modelMapper) {
-    this.roleService = roleService;
+  public UserController(UserService userService, ModelMapper modelMapper) {
+    this.userService = userService;
     this.modelMapper = modelMapper;
   }
 
-  @GetMapping("/test")
-  public ResponseEntity<String> test(){
-    return ResponseEntity.ok("this test was a success");
-  }
-
   @GetMapping
-  public ResponseEntity<List<RoleListDTO>> listAll() {
-    List<RoleListDTO> dtos = roleService.listAll().stream()
-            .map((item) -> modelMapper.map(item, RoleListDTO.class))
+  public ResponseEntity<List<UserListDTO>> listAll() {
+    List<UserListDTO> dtos = userService.listAll().stream()
+            .map((item) -> modelMapper.map(item, UserListDTO.class))
             .collect(Collectors.toList());
     return ResponseEntity.ok(dtos);
   }

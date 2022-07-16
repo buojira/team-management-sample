@@ -1,11 +1,7 @@
-package com.sample.teammgmnt.role;
+package com.sample.teammgmnt.script;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+public class TeamFileDTO {
 
-@Entity(name = "team_role")
-public class RoleEntity {
-  @Id
   private String id;
   private String name;
 
@@ -27,7 +23,7 @@ public class RoleEntity {
 
   @Override
   public String toString() {
-    return "RoleEntity{" +
+    return "TeamFileDTO{" +
             "id='" + id + '\'' +
             ", name='" + name + '\'' +
             '}';

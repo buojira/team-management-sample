@@ -1,17 +1,9 @@
-package com.sample.teammgmnt.team;
+package com.sample.teammgmnt.controller.v1;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-
-@Entity(name = "team_data")
-public class TeamEntity {
-
-  @Id
+public class TeamListDTO {
   private String id;
   private String name;
   private String teamLeadId;
-  @Lob
   private String teamMemberIds;
 
   public String getId() {
@@ -44,15 +36,5 @@ public class TeamEntity {
 
   public void setTeamMemberIds(String teamMemberIds) {
     this.teamMemberIds = teamMemberIds;
-  }
-
-  @Override
-  public String toString() {
-    return "TeamEntity{" +
-            "id='" + id + '\'' +
-            ", name='" + name + '\'' +
-            ", teamLeadId='" + teamLeadId + '\'' +
-            ", teamMemberIds='" + teamMemberIds + '\'' +
-            '}';
   }
 }

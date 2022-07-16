@@ -1,18 +1,13 @@
 package com.sample.teammgmnt.team;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import java.util.Arrays;
 
-@Entity(name = "team_data")
-public class TeamEntity {
+public class TeamURLDTO {
 
-  @Id
   private String id;
   private String name;
   private String teamLeadId;
-  @Lob
-  private String teamMemberIds;
+  private String[] teamMemberIds;
 
   public String getId() {
     return id;
@@ -38,21 +33,21 @@ public class TeamEntity {
     this.teamLeadId = teamLeadId;
   }
 
-  public String getTeamMemberIds() {
+  public String[] getTeamMemberIds() {
     return teamMemberIds;
   }
 
-  public void setTeamMemberIds(String teamMemberIds) {
+  public void setTeamMemberIds(String[] teamMemberIds) {
     this.teamMemberIds = teamMemberIds;
   }
 
   @Override
   public String toString() {
-    return "TeamEntity{" +
+    return "TeamFileDTO{" +
             "id='" + id + '\'' +
             ", name='" + name + '\'' +
             ", teamLeadId='" + teamLeadId + '\'' +
-            ", teamMemberIds='" + teamMemberIds + '\'' +
+            ", teamMemberIds=" + Arrays.toString(teamMemberIds) +
             '}';
   }
 }
