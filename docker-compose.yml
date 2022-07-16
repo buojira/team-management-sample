@@ -12,14 +12,6 @@ services:
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
     networks:
       - spring-cloud-network
-  mysql-server-57:
-    container_name: mysql57
-    image: mysql/mysql-server:5.7
-    volumes:
-      - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
-    ports:
-      - "3307:3306"
-      - "33060:33060"
 networks:
   spring-cloud-network:
     driver: bridge
