@@ -1,7 +1,6 @@
 package com.sample.teammgmnt.controller.v1;
 
 import com.sample.teammgmnt.user.UserService;
-import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,17 +14,17 @@ import java.util.stream.Collectors;
 public class UserController {
 
   private final UserService userService;
-  private final ModelMapper modelMapper;
+  private final TeamModelMapper mapper;
 
-  public UserController(UserService userService, ModelMapper modelMapper) {
+  public UserController(UserService userService, TeamModelMapper mapper) {
     this.userService = userService;
-    this.modelMapper = modelMapper;
+    this.mapper = mapper;
   }
 
   @GetMapping
   public ResponseEntity<List<UserListDTO>> listAll() {
     List<UserListDTO> dtos = userService.listAll().stream()
-            .map((item) -> modelMapper.map(item, UserListDTO.class))
+            .map((item) -> mapper.toUserDTO(item))
             .collect(Collectors.toList());
     return ResponseEntity.ok(dtos);
   }
