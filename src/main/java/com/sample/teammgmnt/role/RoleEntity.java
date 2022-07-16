@@ -3,7 +3,7 @@ package com.sample.teammgmnt.role;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "role")
+@Entity(name = "team_role")
 public class RoleEntity {
   @Id
   private String id;

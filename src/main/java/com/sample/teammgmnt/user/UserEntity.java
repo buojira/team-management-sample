@@ -3,7 +3,7 @@ package com.sample.teammgmnt.user;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity(name = "user")
+@Entity(name = "team_user")
 public class UserEntity {
   @Id
   private String id;

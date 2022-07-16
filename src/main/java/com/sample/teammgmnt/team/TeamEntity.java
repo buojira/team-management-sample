@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-@Entity(name = "team")
+@Entity(name = "team_data")
 public class TeamEntity {
 
   @Id
