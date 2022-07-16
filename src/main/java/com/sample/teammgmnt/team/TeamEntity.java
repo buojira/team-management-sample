@@ -1,5 +1,8 @@
 package com.sample.teammgmnt.team;
 
+import org.hibernate.annotations.Type;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
@@ -11,7 +14,8 @@ public class TeamEntity {
   private String id;
   private String name;
   private String teamLeadId;
-  @Lob
+
+  @Type(type = "org.hibernate.type.TextType")
   private String teamMemberIds;
 
   public String getId() {

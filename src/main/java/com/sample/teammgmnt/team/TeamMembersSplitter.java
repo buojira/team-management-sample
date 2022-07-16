@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class TeamMembersSplitter {
 
-  private final Pattern SPLIT_PATTERN = Pattern.compile("([^\\[\\],]+)");
+  private final Pattern SPLIT_PATTERN = Pattern.compile("([^\\[\\],\\s]+)");
 
   public List<String> extractMembers(String inlineListOfMembers) {
     List<String> members = new ArrayList<>();

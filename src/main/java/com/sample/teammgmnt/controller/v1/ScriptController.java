@@ -22,10 +22,30 @@ public class ScriptController {
     this.initialDataService = initialDataService;
   }
 
-  @PostMapping("/fill")
-  public ResponseEntity<String> fillData() {
+  @PostMapping("/fill/users")
+  public ResponseEntity<String> fillUsers() {
     try {
-      return ResponseEntity.ok(initialDataService.fillInitialData());
+      return ResponseEntity.ok(initialDataService.createAllUser());
+    } catch (IOException e) {
+      LOGGER.error(e.getMessage(), e);
+      return ResponseEntity.internalServerError().body(e.getMessage());
+    }
+  }
+
+  @PostMapping("/fill/roles")
+  public ResponseEntity<String> fillRoles() {
+    try {
+      return ResponseEntity.ok(initialDataService.createAllRoles());
+    } catch (IOException e) {
+      LOGGER.error(e.getMessage(), e);
+      return ResponseEntity.internalServerError().body(e.getMessage());
+    }
+  }
+
+  @PostMapping("/fill/teams")
+  public ResponseEntity<String> fillTeams() {
+    try {
+      return ResponseEntity.ok(initialDataService.createAllTeams());
     } catch (IOException e) {
       LOGGER.error(e.getMessage(), e);
       return ResponseEntity.internalServerError().body(e.getMessage());

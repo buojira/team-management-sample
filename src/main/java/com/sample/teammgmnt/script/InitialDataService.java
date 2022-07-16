@@ -42,24 +42,17 @@ public class InitialDataService {
     objectMapper = new ObjectMapper();
   }
 
-  public String fillInitialData() throws IOException {
-//    createAllUser();
-//    createAllTeams();
-//    createAllRoles(getFileContent(ROLES_JSON));
-    return "ok. all data was set";
-  }
-
-  private void createAllRoles(String content) throws JsonProcessingException {
-    JsonNode rows = objectMapper.readTree(content);
+  public String createAllRoles() throws JsonProcessingException {
+    JsonNode rows = objectMapper.readTree(getFileContent(ROLES_JSON));
     for (int i = 0; i < rows.size(); i++) {
       RoleEntity entity = objectMapper.readValue(rows.get(i).toString(), RoleEntity.class);
       roleRepository.save(entity);
       LOGGER.info(entity.toString());
     }
-    LOGGER.info(rows.size() + " roles were created");
+    return rows.size() + " roles were created";
   }
 
-  private void createAllUser() throws IOException {
+  public String createAllUser() throws IOException {
     JsonNode rows = getContentFromURL(ALL_USERS_URL);
     for (int i = 0; i < rows.size(); i++) {
       UserFileDTO id = getUserFileDTO(rows.get(i));
@@ -67,7 +60,18 @@ public class InitialDataService {
       userRepository.save(entity);
       LOGGER.info(entity.toString());
     }
-    LOGGER.info(rows.size() + " users were created");
+    return rows.size() + " users were created";
+  }
+
+  public String createAllTeams() throws IOException {
+    JsonNode rows = getContentFromURL(ALL_TEAMS_URL);
+    for (int i = 0; i < rows.size(); i++) {
+      TeamFileDTO id = getTeamFileDTO(rows.get(i));
+      TeamEntity entity = getTeamEntity(id.getId());
+      teamRepository.save(entity);
+      LOGGER.info(entity.toString());
+    }
+    return rows.size() + " teams were created";
   }
 
   private UserEntity getUserEntity(String id) throws IOException {
@@ -80,17 +84,6 @@ public class InitialDataService {
 
   private JsonNode getContentFromURL(String url) throws IOException {
     return objectMapper.readTree(URI.create(url).toURL());
-  }
-
-  private void createAllTeams() throws IOException {
-    JsonNode rows = getContentFromURL(ALL_TEAMS_URL);
-    for (int i = 0; i < rows.size(); i++) {
-      TeamFileDTO id = getTeamFileDTO(rows.get(i));
-      TeamEntity entity = getTeamEntity(id.getId());
-      teamRepository.save(entity);
-      LOGGER.info(entity.toString());
-    }
-    LOGGER.info(rows.size() + " teams were created");
   }
 
   private TeamFileDTO getTeamFileDTO(JsonNode row) throws JsonProcessingException {
