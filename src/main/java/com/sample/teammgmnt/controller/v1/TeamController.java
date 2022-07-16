@@ -1,6 +1,8 @@
 package com.sample.teammgmnt.controller.v1;
 
 import com.sample.teammgmnt.business.team.TeamService;
+import com.sample.teammgmnt.controller.v1.dto.TeamListDTO;
+import com.sample.teammgmnt.controller.v1.dto.UserListDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +17,9 @@ import java.util.stream.Collectors;
 public class TeamController {
 
   private final TeamService teamService;
-  private final TeamModelMapper mapper;
+  private final CustomModelMapper mapper;
 
-  public TeamController(TeamService teamService, TeamModelMapper mapper) {
+  public TeamController(TeamService teamService, CustomModelMapper mapper) {
     this.teamService = teamService;
     this.mapper = mapper;
   }
@@ -37,7 +39,7 @@ public class TeamController {
   }
 
   @GetMapping("{id}/members")
-  public ResponseEntity<List<UserListDTO>> getMembers(@PathVariable String id) {
+    public ResponseEntity<List<UserListDTO>> getMembers(@PathVariable String id) {
     List<UserListDTO> members = teamService.getUsers(id).stream()
             .map(row -> mapper.toUserDTO(row))
             .collect(Collectors.toList());

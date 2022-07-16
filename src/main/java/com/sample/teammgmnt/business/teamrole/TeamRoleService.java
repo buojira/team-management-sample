@@ -1,5 +1,6 @@
 package com.sample.teammgmnt.business.teamrole;
 
+import com.sample.teammgmnt.business.Fields;
 import com.sample.teammgmnt.business.IDGenerator;
 import com.sun.istack.NotNull;
 import org.apache.logging.log4j.util.Strings;
@@ -9,6 +10,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +22,10 @@ public class TeamRoleService {
 
   public TeamRoleService(TeamRoleRepository teamRoleRepository) {
     this.teamRoleRepository = teamRoleRepository;
+  }
+
+  public List<TeamRoleEntity> listAll() {
+    return teamRoleRepository.findAll();
   }
 
   public String save(@NotNull String teamID, @NotNull String userID, String roleID) {
@@ -58,10 +64,7 @@ public class TeamRoleService {
 
   private ExampleMatcher fullScanExample() {
     return ExampleMatcher.matching()
-            .withIgnorePaths("id")
-            .withStringMatcher(ExampleMatcher.StringMatcher.valueOf("userId"))
-            .withStringMatcher(ExampleMatcher.StringMatcher.valueOf("teamID"))
-            .withStringMatcher(ExampleMatcher.StringMatcher.valueOf("roleID"));
+            .withIgnorePaths(Fields.id.name());
   }
 
   private TeamRoleEntity castEntity(String teamID, String userID, String roleID) {

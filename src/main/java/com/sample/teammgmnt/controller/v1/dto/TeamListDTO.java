@@ -1,4 +1,4 @@
-package com.sample.teammgmnt.controller.v1;
+package com.sample.teammgmnt.controller.v1.dto;
 
 public class TeamListDTO {
   private String id;

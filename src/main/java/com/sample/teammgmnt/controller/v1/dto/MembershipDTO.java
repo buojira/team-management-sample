@@ -1,6 +1,6 @@
-package com.sample.teammgmnt.controller.v1;
+package com.sample.teammgmnt.controller.v1.dto;
 
-public class UserRoleListDTO {
+public class MembershipDTO {
   private String user;
   private String team;
   private String role;

@@ -1,6 +1,7 @@
 package com.sample.teammgmnt.controller.v1;
 
 import com.sample.teammgmnt.business.user.UserService;
+import com.sample.teammgmnt.controller.v1.dto.UserListDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +15,9 @@ import java.util.stream.Collectors;
 public class UserController {
 
   private final UserService userService;
-  private final TeamModelMapper mapper;
+  private final CustomModelMapper mapper;
 
-  public UserController(UserService userService, TeamModelMapper mapper) {
+  public UserController(UserService userService, CustomModelMapper mapper) {
     this.userService = userService;
     this.mapper = mapper;
   }

@@ -1,6 +1,7 @@
 package com.sample.teammgmnt.controller.v1;
 
 import com.sample.teammgmnt.business.role.RoleService;
+import com.sample.teammgmnt.controller.v1.dto.RoleListDTO;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

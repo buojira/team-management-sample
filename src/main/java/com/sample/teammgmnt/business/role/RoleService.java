@@ -1,8 +1,8 @@
 package com.sample.teammgmnt.business.role;
 
 import com.sample.teammgmnt.business.teamrole.TeamRoleEntity;
-import com.sample.teammgmnt.controller.v1.UserRoleListDTO;
-import com.sample.teammgmnt.controller.v1.UserRoleListDTOBuilder;
+import com.sample.teammgmnt.controller.v1.dto.MembershipDTO;
+import com.sample.teammgmnt.controller.v1.dto.MembershipDTOBuilder;
 import com.sample.teammgmnt.business.teamrole.TeamRoleRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +29,7 @@ public class RoleService {
     return roleRepository.findAll();
   }
 
-  public List<UserRoleListDTO> findUserRoleList() {
+  public List<MembershipDTO> findUserRoleList() {
 
     return teamRoleRepository.findAll()
             .stream()
@@ -37,8 +37,8 @@ public class RoleService {
             .collect(Collectors.toList());
   }
 
-  private UserRoleListDTO toDTO(TeamRoleEntity entity) {
-    return UserRoleListDTOBuilder.of()
+  private MembershipDTO toDTO(TeamRoleEntity entity) {
+    return MembershipDTOBuilder.of()
             .user(entity.getUserId())
             .team(entity.getTeamId())
             .user(entity.getUserId())
