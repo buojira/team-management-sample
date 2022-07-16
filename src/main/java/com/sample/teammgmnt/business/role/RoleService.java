@@ -1,6 +1,8 @@
 package com.sample.teammgmnt.business.role;
 
 import com.sample.teammgmnt.business.ServiceHelper;
+import com.sample.teammgmnt.business.membership.MembershipEntity;
+import com.sample.teammgmnt.business.membership.MembershipService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,11 +18,17 @@ public class RoleService {
 
   private final RoleRepository roleRepository;
   private final ServiceHelper serviceHelper;
+  private final MembershipService membershipService;
 
   @Autowired
-  public RoleService(RoleRepository roleRepository) {
+  public RoleService(RoleRepository roleRepository, MembershipService membershipService) {
     this.roleRepository = roleRepository;
+    this.membershipService = membershipService;
     serviceHelper = new ServiceHelper();
+  }
+
+  public RoleEntity getRole(String roleID) {
+    return roleRepository.getById(roleID);
   }
 
   public Optional<String> getRoleName(String id){
@@ -65,4 +73,7 @@ public class RoleService {
     return RoleEntityBuilder.of().id(id).name(name).build();
   }
 
+  public List<MembershipEntity> getMemberships(String roleID) {
+    return membershipService.findMemberships(roleID);
+  }
 }

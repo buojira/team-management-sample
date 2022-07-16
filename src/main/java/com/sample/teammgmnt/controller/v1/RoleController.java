@@ -1,11 +1,12 @@
 package com.sample.teammgmnt.controller.v1;
 
 import com.sample.teammgmnt.business.role.RoleService;
-import com.sample.teammgmnt.controller.v1.dto.RoleListDTO;
-import org.modelmapper.ModelMapper;
+import com.sample.teammgmnt.controller.v1.dto.MembershipResponseDTO;
+import com.sample.teammgmnt.controller.v1.dto.RoleResponseDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,11 +20,11 @@ import java.util.stream.Collectors;
 public class RoleController {
 
   private final RoleService roleService;
-  private final ModelMapper modelMapper;
+  private final CustomModelMapper mapper;
 
-  public RoleController(RoleService roleService, ModelMapper modelMapper) {
+  public RoleController(RoleService roleService, CustomModelMapper modelMapper) {
     this.roleService = roleService;
-    this.modelMapper = modelMapper;
+    this.mapper = modelMapper;
   }
 
   @GetMapping("/test")
@@ -44,11 +45,19 @@ public class RoleController {
   }
 
   @GetMapping
-  public ResponseEntity<List<RoleListDTO>> listAll() {
-    List<RoleListDTO> dtos = roleService.listAll().stream()
-            .map((item) -> modelMapper.map(item, RoleListDTO.class))
+  public ResponseEntity<List<RoleResponseDTO>> listAll() {
+    List<RoleResponseDTO> dtos = roleService.listAll().stream()
+            .map((item) -> mapper.toRoleDTO(item))
             .collect(Collectors.toList());
     return ResponseEntity.ok(dtos);
+  }
+
+  @GetMapping("{roleID}")
+  public ResponseEntity<List<MembershipResponseDTO>> getMembership(@PathVariable String roleID) {
+    List<MembershipResponseDTO> list = roleService.getMemberships(roleID).stream()
+            .map(row -> mapper.toMemberShipDTO(row))
+            .collect(Collectors.toList());
+    return ResponseEntity.ok(list);
   }
 
 }

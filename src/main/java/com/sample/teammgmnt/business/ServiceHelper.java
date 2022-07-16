@@ -12,7 +12,8 @@ public class ServiceHelper {
 
   public ExampleMatcher getFullScanExample() {
     return ExampleMatcher.matching()
-            .withIgnorePaths(Fields.id.name());
+            .withIgnorePaths(Fields.id.name())
+            .withIgnoreNullValues();
   }
 
 

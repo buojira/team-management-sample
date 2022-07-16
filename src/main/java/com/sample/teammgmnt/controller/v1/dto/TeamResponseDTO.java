@@ -1,6 +1,6 @@
 package com.sample.teammgmnt.controller.v1.dto;
 
-public class TeamListDTO {
+public class TeamResponseDTO {
   private String id;
   private String name;
   private String teamLeadId;

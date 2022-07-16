@@ -1,6 +1,6 @@
 package com.sample.teammgmnt.controller.v1.dto;
 
-public class MembershipDTO {
+public class MembershipResponseDTO {
   private String user;
   private String team;
   private String role;

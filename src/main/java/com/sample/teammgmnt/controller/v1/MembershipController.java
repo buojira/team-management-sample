@@ -1,7 +1,7 @@
 package com.sample.teammgmnt.controller.v1;
 
 import com.sample.teammgmnt.business.membership.MembershipService;
-import com.sample.teammgmnt.controller.v1.dto.MembershipDTO;
+import com.sample.teammgmnt.controller.v1.dto.MembershipResponseDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +25,8 @@ public class MembershipController {
   }
 
   @GetMapping
-  public ResponseEntity<List<MembershipDTO>> listAll() {
-    List<MembershipDTO> list = membershipService.listAll().stream()
+  public ResponseEntity<List<MembershipResponseDTO>> listAll() {
+    List<MembershipResponseDTO> list = membershipService.listAll().stream()
             .map(row -> mapper.toMemberShipDTO(row))
             .collect(Collectors.toList());
     return ResponseEntity.ok(list);

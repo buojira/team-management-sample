@@ -1,7 +1,7 @@
 package com.sample.teammgmnt.controller.v1;
 
 import com.sample.teammgmnt.business.user.UserService;
-import com.sample.teammgmnt.controller.v1.dto.UserListDTO;
+import com.sample.teammgmnt.controller.v1.dto.UserResponseDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +23,8 @@ public class UserController {
   }
 
   @GetMapping
-  public ResponseEntity<List<UserListDTO>> listAll() {
-    List<UserListDTO> dtos = userService.listAll().stream()
+  public ResponseEntity<List<UserResponseDTO>> listAll() {
+    List<UserResponseDTO> dtos = userService.listAll().stream()
             .map((item) -> mapper.toUserDTO(item))
             .collect(Collectors.toList());
     return ResponseEntity.ok(dtos);

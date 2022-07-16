@@ -1,6 +1,6 @@
 package com.sample.teammgmnt.controller.v1.dto;
 
-public class RoleListDTO {
+public class RoleResponseDTO {
   private String id;
   private String name;
 
