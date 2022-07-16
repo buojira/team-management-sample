@@ -1,7 +1,7 @@
 package com.sample.teammgmnt.controller.v1;
 
-import com.sample.teammgmnt.team.TeamEntity;
-import com.sample.teammgmnt.user.UserEntity;
+import com.sample.teammgmnt.business.team.TeamEntity;
+import com.sample.teammgmnt.business.user.UserEntity;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 

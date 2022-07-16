@@ -1,4 +1,4 @@
-package com.sample.teammgmnt.script;
+package com.sample.teammgmnt.business.script;
 
 public class TeamFileDTO {
 

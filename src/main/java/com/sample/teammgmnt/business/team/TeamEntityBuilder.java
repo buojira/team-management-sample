@@ -1,4 +1,4 @@
-package com.sample.teammgmnt.team;
+package com.sample.teammgmnt.business.team;
 
 public final class TeamEntityBuilder {
   private String id;

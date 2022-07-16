@@ -1,4 +1,4 @@
-package com.sample.teammgmnt.team;
+package com.sample.teammgmnt.business.team;
 
 import java.util.ArrayList;
 import java.util.List;

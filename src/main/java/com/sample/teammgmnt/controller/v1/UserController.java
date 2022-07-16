@@ -1,6 +1,6 @@
 package com.sample.teammgmnt.controller.v1;
 
-import com.sample.teammgmnt.user.UserService;
+import com.sample.teammgmnt.business.user.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

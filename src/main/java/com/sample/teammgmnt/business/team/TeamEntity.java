@@ -1,4 +1,4 @@
-package com.sample.teammgmnt.team;
+package com.sample.teammgmnt.business.team;
 
 import org.hibernate.annotations.Type;
 

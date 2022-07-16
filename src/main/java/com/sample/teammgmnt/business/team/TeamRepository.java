@@ -1,8 +1,8 @@
-package com.sample.teammgmnt.role;
+package com.sample.teammgmnt.business.team;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RoleSearchRepository extends JpaRepository<RoleSearchEntity, String> {
+public interface TeamRepository extends JpaRepository<TeamEntity, String> {
 }

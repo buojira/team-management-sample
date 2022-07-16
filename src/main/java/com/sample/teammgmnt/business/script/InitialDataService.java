@@ -1,16 +1,16 @@
-package com.sample.teammgmnt.script;
+package com.sample.teammgmnt.business.script;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sample.teammgmnt.role.RoleEntity;
-import com.sample.teammgmnt.role.RoleRepository;
-import com.sample.teammgmnt.team.TeamEntity;
-import com.sample.teammgmnt.team.TeamEntityBuilder;
-import com.sample.teammgmnt.team.TeamURLDTO;
-import com.sample.teammgmnt.team.TeamRepository;
-import com.sample.teammgmnt.user.UserEntity;
-import com.sample.teammgmnt.user.UserRepository;
+import com.sample.teammgmnt.business.role.RoleEntity;
+import com.sample.teammgmnt.business.role.RoleRepository;
+import com.sample.teammgmnt.business.team.TeamEntityBuilder;
+import com.sample.teammgmnt.business.team.TeamURLDTO;
+import com.sample.teammgmnt.business.team.TeamEntity;
+import com.sample.teammgmnt.business.team.TeamRepository;
+import com.sample.teammgmnt.business.user.UserEntity;
+import com.sample.teammgmnt.business.user.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

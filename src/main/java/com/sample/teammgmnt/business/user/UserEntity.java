@@ -1,4 +1,4 @@
-package com.sample.teammgmnt.user;
+package com.sample.teammgmnt.business.user;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

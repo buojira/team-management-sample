@@ -1,8 +1,8 @@
-package com.sample.teammgmnt.team;
+package com.sample.teammgmnt.business.user;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TeamRepository extends JpaRepository<TeamEntity, String> {
+public interface UserRepository extends JpaRepository<UserEntity, String> {
 }

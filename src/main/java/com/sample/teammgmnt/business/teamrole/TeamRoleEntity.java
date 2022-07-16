@@ -1,10 +1,10 @@
-package com.sample.teammgmnt.role;
+package com.sample.teammgmnt.business.teamrole;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity(name = "role_search")
-public class RoleSearchEntity {
+public class TeamRoleEntity {
 
   @Id
   private String id;

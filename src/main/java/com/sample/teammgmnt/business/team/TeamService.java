@@ -1,7 +1,7 @@
-package com.sample.teammgmnt.team;
+package com.sample.teammgmnt.business.team;
 
-import com.sample.teammgmnt.user.UserEntity;
-import com.sample.teammgmnt.user.UserService;
+import com.sample.teammgmnt.business.user.UserEntity;
+import com.sample.teammgmnt.business.user.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
