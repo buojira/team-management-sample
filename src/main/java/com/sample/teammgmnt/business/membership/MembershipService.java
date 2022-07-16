@@ -58,6 +58,26 @@ public class MembershipService {
     return "Role was not assigned to team member. Nothing was done";
   }
 
+  public List<RoleEntity> findRoles(String teamID, String userID) {
+    List<RoleEntity> result = new ArrayList<>();
+    MembershipEntity filter = MembershipEntityBuilder.of()
+            .teamId(teamID)
+            .userId(userID)
+            .build();
+    List<MembershipEntity> rows = findAll(filter);
+    rows.forEach(row -> result.add(roleRepository.getById(row.getRoleId())));
+    return result;
+  }
+
+  public List<MembershipEntity> findMemberships(String roleID) {
+    MembershipEntity filter = MembershipEntityBuilder.of()
+            .roleId(roleID)
+            .build();
+    List<MembershipEntity> result = new ArrayList<>();
+    findAll(filter).forEach(row -> result.add(assembleDescribedMembership(row)));
+    return result;
+  }
+
   private Optional<String> findID(MembershipEntity entity) {
     Optional<MembershipEntity> one = membershipRepository.findOne(getFullScanMembershipExample(entity));
     return one.isPresent() ?
@@ -83,26 +103,6 @@ public class MembershipService {
 
   private String verifyRoleID(String roleID) {
     return Strings.isNotBlank(roleID) ? roleID : DEFAULT_ROLE;
-  }
-
-  public List<RoleEntity> findRoles(String teamID, String userID) {
-    List<RoleEntity> result = new ArrayList<>();
-    MembershipEntity filter = MembershipEntityBuilder.of()
-            .teamId(teamID)
-            .userId(userID)
-            .build();
-    List<MembershipEntity> rows = findAll(filter);
-    rows.forEach(row -> result.add(roleRepository.getById(row.getRoleId())));
-    return result;
-  }
-
-  public List<MembershipEntity> findMemberships(String roleID) {
-    MembershipEntity filter = MembershipEntityBuilder.of()
-            .roleId(roleID)
-            .build();
-    List<MembershipEntity> result = new ArrayList<>();
-    findAll(filter).forEach(row -> result.add(assembleDescribedMembership(row)));
-    return result;
   }
 
   private MembershipEntity assembleDescribedMembership(MembershipEntity row) {
