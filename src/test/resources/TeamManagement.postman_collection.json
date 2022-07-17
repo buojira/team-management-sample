@@ -1,0 +1,454 @@
+{
+	"info": {
+		"_postman_id": "b04d68e8-e096-4a9d-9f88-9faa7b3910b7",
+		"name": "Team Management",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15652052"
+	},
+	"item": [
+		{
+			"name": "Team",
+			"item": [
+				{
+					"name": "Team List All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/team",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"team"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Team Members",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/team/7676a4bf-adfe-415c-941b-1739af07039b/members",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"team",
+								"7676a4bf-adfe-415c-941b-1739af07039b",
+								"members"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Team Detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/team/7676a4bf-adfe-415c-941b-1739af07039b",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"team",
+								"7676a4bf-adfe-415c-941b-1739af07039b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Team Membership",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/team/7676a4bf-adfe-415c-941b-1739af07039b/e0dba3dc-313d-4648-bd9c-4ddc8b189e84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"team",
+								"7676a4bf-adfe-415c-941b-1739af07039b",
+								"e0dba3dc-313d-4648-bd9c-4ddc8b189e84"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Role Add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role?roleName=Just a Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							],
+							"query": [
+								{
+									"key": "roleName",
+									"value": "Just a Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role Remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role?roleName=Just a Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							],
+							"query": [
+								{
+									"key": "roleName",
+									"value": "Just a Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role List All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role Membership",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role/2643d32d-036f-40b6-86ea-2473d4ccae03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role",
+								"2643d32d-036f-40b6-86ea-2473d4ccae03"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role Membership (Non Existent)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role/2643d32d-036f--86ea-2473d4ccae03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role",
+								"2643d32d-036f--86ea-2473d4ccae03"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Membership",
+			"item": [
+				{
+					"name": "Membership List All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Membership Add Dev",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership?teamID=7676a4bf-adfe-415c-941b-1739af07039b&userID=e0dba3dc-313d-4648-bd9c-4ddc8b189e84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							],
+							"query": [
+								{
+									"key": "teamID",
+									"value": "7676a4bf-adfe-415c-941b-1739af07039b"
+								},
+								{
+									"key": "userID",
+									"value": "e0dba3dc-313d-4648-bd9c-4ddc8b189e84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Membership Add PO",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership?teamID=7676a4bf-adfe-415c-941b-1739af07039b&userID=197c2b23-1218-44d0-b6b8-d757ba004515&roleID=0987b4fc-43f2-47a2-8403-e934dc270602",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							],
+							"query": [
+								{
+									"key": "teamID",
+									"value": "7676a4bf-adfe-415c-941b-1739af07039b"
+								},
+								{
+									"key": "userID",
+									"value": "197c2b23-1218-44d0-b6b8-d757ba004515"
+								},
+								{
+									"key": "roleID",
+									"value": "0987b4fc-43f2-47a2-8403-e934dc270602"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Membership Add Tester",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership?teamID=7676a4bf-adfe-415c-941b-1739af07039b&userID=197c2b23-1218-44d0-b6b8-d757ba004515&roleID=2643d32d-036f-40b6-86ea-2473d4ccae03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							],
+							"query": [
+								{
+									"key": "teamID",
+									"value": "7676a4bf-adfe-415c-941b-1739af07039b"
+								},
+								{
+									"key": "userID",
+									"value": "197c2b23-1218-44d0-b6b8-d757ba004515"
+								},
+								{
+									"key": "roleID",
+									"value": "2643d32d-036f-40b6-86ea-2473d4ccae03"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Membership Remove",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership?teamID=7676a4bf-adfe-415c-941b-1739af07039b&userID=e0dba3dc-313d-4648-bd9c-4ddc8b189e84&roleID=1245a4bf-adfe-415c-941b-1739af070301",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							],
+							"query": [
+								{
+									"key": "teamID",
+									"value": "7676a4bf-adfe-415c-941b-1739af07039b"
+								},
+								{
+									"key": "userID",
+									"value": "e0dba3dc-313d-4648-bd9c-4ddc8b189e84"
+								},
+								{
+									"key": "roleID",
+									"value": "1245a4bf-adfe-415c-941b-1739af070301"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "User List All",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Scripts",
+			"item": [
+				{
+					"name": "Start Teams Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/script/fill/teams",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"script",
+								"fill",
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start Users Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/script/fill/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"script",
+								"fill",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start Roles Data",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/script/fill/roles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"script",
+								"fill",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

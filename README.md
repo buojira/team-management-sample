@@ -29,6 +29,12 @@ In the root folder, just execute the following command:
 ```
 mvn clean install && docker-compose up --build
 ```
+To test, it is possible to use a postman collection prepared for that:
+```
+test/resources/TeamManagement.postman_collection.json
+```
+It is recommended to run the loading script inside de folder "scripts" of the postman collection
+
 Other useful commands:
 - build with docker:
 ```
