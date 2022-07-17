@@ -27,16 +27,6 @@ public class RoleService {
     serviceHelper = new ServiceHelper();
   }
 
-  public RoleEntity getRole(String roleID) {
-    return roleRepository.getById(roleID);
-  }
-
-  public Optional<String> getRoleName(String id){
-    Optional<RoleEntity> one = roleRepository.findById(id);
-    return one.isPresent() ?
-            Optional.of(one.get().getName()) :
-            Optional.empty();
-  }
   public Optional<String> getRoleID(String name) {
     RoleEntity entity = RoleEntityBuilder.of()
             .name(name)
@@ -66,14 +56,14 @@ public class RoleService {
       return "Role already deleted. Nothing was done";
     }
     roleRepository.deleteById(id.get());
-    return "New role deleted with success";
-  }
-
-  private RoleEntity castRole(String id, String name) {
-    return RoleEntityBuilder.of().id(id).name(name).build();
+    return "Role deleted with success";
   }
 
   public List<MembershipEntity> getMemberships(String roleID) {
     return membershipService.findMemberships(roleID);
+  }
+
+  private RoleEntity castRole(String id, String name) {
+    return RoleEntityBuilder.of().id(id).name(name).build();
   }
 }

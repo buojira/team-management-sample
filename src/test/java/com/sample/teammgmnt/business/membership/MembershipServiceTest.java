@@ -6,11 +6,11 @@ import com.sample.teammgmnt.business.team.TeamEntity;
 import com.sample.teammgmnt.business.team.TeamService;
 import com.sample.teammgmnt.business.user.UserEntity;
 import com.sample.teammgmnt.business.user.UserService;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.data.domain.Example;
 
@@ -30,8 +30,9 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class MembershipServiceTest {
 
+  @Spy
+  @InjectMocks
   private MembershipService target;
-
   @Mock
   private MembershipRepository membershipRepository;
   @Mock
@@ -40,11 +41,6 @@ public class MembershipServiceTest {
   private UserService userService;
   @Mock
   private TeamService teamService;
-
-  @Before
-  public void init() {
-    target = Mockito.spy(new MembershipService(membershipRepository, roleRepository, userService, teamService));
-  }
 
   @Test
   public void whenDeletingExistentRow_thenSuccess(){
