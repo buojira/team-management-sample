@@ -11,6 +11,11 @@ using some Restful principles to store and retrieve data according to necessity.
 Talking about Role and Membership, only these two domains had Unit Tests written for them, because these are
 the solution fo the problem. All others domains are in this project just as support for the solution, but in a
 real life situation, they should not be in this microservice.
+End-to-end tests were written using postman. They can be imported using the file below:
+```
+test/resources/E2E_Testing.postman_collection.json
+```
+It is important to run the load scripts first (we will talk about them later)
 
 Package v1 was created in order to do not break compatibility. The rest of the packages were organized thinking in domains.
 
@@ -29,7 +34,7 @@ In the root folder, just execute the following command:
 ```
 mvn clean install && docker-compose up --build
 ```
-To test, it is possible to use a postman collection prepared for that:
+In order to explore the application, it is possible to use a postman collection prepared for that:
 ```
 test/resources/TeamManagement.postman_collection.json
 ```

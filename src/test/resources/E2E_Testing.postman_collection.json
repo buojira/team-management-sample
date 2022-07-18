@@ -1,0 +1,531 @@
+{
+	"info": {
+		"_postman_id": "e4620b90-7de1-48c1-b7d8-09478ccdd133",
+		"name": "Team Management Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15652052"
+	},
+	"item": [
+		{
+			"name": "Role Crud Test",
+			"item": [
+				{
+					"name": "Prerequirement",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role?roleName=Just_a_Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							],
+							"query": [
+								{
+									"key": "roleName",
+									"value": "Just_a_Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert New (Success)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"New role registered with success\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role?roleName=Just_a_Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							],
+							"query": [
+								{
+									"key": "roleName",
+									"value": "Just_a_Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role is Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Just_a_Test\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Insert Duplicate (Fail)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"Role name already registered. Nothing was done\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role?roleName=Just_a_Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							],
+							"query": [
+								{
+									"key": "roleName",
+									"value": "Just_a_Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Role",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role?roleName=Just_a_Test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							],
+							"query": [
+								{
+									"key": "roleName",
+									"value": "Just_a_Test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Roles is not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Role is not found\", function () {",
+									"    pm.expect(pm.response.text()).not.to.include(\"Just_a_Test\");",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/role",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"role"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Membership Crud Test",
+			"item": [
+				{
+					"name": "Prerequirement",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership?teamID=7676a4bf-adfe-415c-941b-1739af07039b&userID=e0dba3dc-313d-4648-bd9c-4ddc8b189e84&roleID=1245a4bf-adfe-415c-941b-1739af070301",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							],
+							"query": [
+								{
+									"key": "teamID",
+									"value": "7676a4bf-adfe-415c-941b-1739af07039b"
+								},
+								{
+									"key": "userID",
+									"value": "e0dba3dc-313d-4648-bd9c-4ddc8b189e84"
+								},
+								{
+									"key": "roleID",
+									"value": "1245a4bf-adfe-415c-941b-1739af070301"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "When Adding Without Role then Add as Dev",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"New role assigned to team member\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership?teamID=7676a4bf-adfe-415c-941b-1739af07039b&userID=e0dba3dc-313d-4648-bd9c-4ddc8b189e84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							],
+							"query": [
+								{
+									"key": "teamID",
+									"value": "7676a4bf-adfe-415c-941b-1739af07039b"
+								},
+								{
+									"key": "userID",
+									"value": "e0dba3dc-313d-4648-bd9c-4ddc8b189e84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Membership is Found as Dev",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.include(\"{\\\"user\\\":\\\"e0dba3dc-313d-4648-bd9c-4ddc8b189e84\\\",\\\"team\\\":\\\"7676a4bf-adfe-415c-941b-1739af07039b\\\",\\\"role\\\":\\\"1245a4bf-adfe-415c-941b-1739af070301\\\"}\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fails to add duplicated Dev",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Role was already assigned to team member. Nothing was done\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership?teamID=7676a4bf-adfe-415c-941b-1739af07039b&userID=e0dba3dc-313d-4648-bd9c-4ddc8b189e84",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							],
+							"query": [
+								{
+									"key": "teamID",
+									"value": "7676a4bf-adfe-415c-941b-1739af07039b"
+								},
+								{
+									"key": "userID",
+									"value": "e0dba3dc-313d-4648-bd9c-4ddc8b189e84"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Erase Dev",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership?teamID=7676a4bf-adfe-415c-941b-1739af07039b&userID=e0dba3dc-313d-4648-bd9c-4ddc8b189e84&roleID=1245a4bf-adfe-415c-941b-1739af070301",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							],
+							"query": [
+								{
+									"key": "teamID",
+									"value": "7676a4bf-adfe-415c-941b-1739af07039b"
+								},
+								{
+									"key": "userID",
+									"value": "e0dba3dc-313d-4648-bd9c-4ddc8b189e84"
+								},
+								{
+									"key": "roleID",
+									"value": "1245a4bf-adfe-415c-941b-1739af070301"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Membership is not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Body does not matches string\", function () {",
+									"    pm.expect(pm.response.text()).not.to.include(\"{\\\"user\\\":\\\"e0dba3dc-313d-4648-bd9c-4ddc8b189e84\\\",\\\"team\\\":\\\"7676a4bf-adfe-415c-941b-1739af07039b\\\",\\\"role\\\":\\\"1245a4bf-adfe-415c-941b-1739af070301\\\"}\");",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/membership",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"membership"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Default Roles Listing",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"1245a4bf-adfe-415c-941b-1739af070301\");",
+							"});pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Developer\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"0987b4fc-43f2-47a2-8403-e934dc270602\");",
+							"});pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Product Owner\");",
+							"});",
+							"",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"2643d32d-036f-40b6-86ea-2473d4ccae03\");",
+							"});pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"Tester\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8090/role",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8090",
+					"path": [
+						"role"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
