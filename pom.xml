@@ -76,6 +76,7 @@
 							<goal>exec</goal>
 						</goals>
 						<configuration>
+							<skip>${skip.postman.tests}</skip>
 							<executable>npm</executable>
 							<commandlineArgs>
 								install
@@ -93,7 +94,7 @@
 							<skip>${skip.postman.tests}</skip>
 							<executable>node_modules/newman/bin/newman.js</executable>
 							<commandlineArgs>
-								run src/test/resources/E2E_Testing.postman_collection.json
+								run src/test/resources/E2E_Testing.postman_collection.success.json
 							</commandlineArgs>
 						</configuration>
 					</execution>
