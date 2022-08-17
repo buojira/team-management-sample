@@ -45,7 +45,7 @@ public class MembershipController {
                                        @RequestParam String userID,
                                        @RequestParam String roleID) {
     String response = membershipService.delete(teamID, userID, roleID);
-    return ResponseEntity.ok(response);
+    return ResponseEntity.noContent().build();
   }
 
 }

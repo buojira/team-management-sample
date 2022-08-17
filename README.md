@@ -34,6 +34,12 @@ In the root folder, just execute the following command:
 ```
 mvn clean install && docker-compose up --build
 ```
+To run postman tests for now it is necessary that the application is running, so it is skipping for now.
+Once the application is up and running, execute the folowing line:
+```
+mvn verify -Dskip.postman.tests=false
+```
+
 In order to explore the application, it is possible to use a postman collection prepared for that:
 ```
 test/resources/TeamManagement.postman_collection.json
@@ -53,3 +59,7 @@ docker run --rm --name team-mgmnt -p 8090:8080 sample/team-mgmnt-docker
 # Suggestion for improvement in the Team or User services:
 - Pagination and Sorting;
 - Searches for fields that are not key (E.G.: Name, Leader etc...)
+- improve testing. Promissing docs:
+  	https://www.wwt.com/article/postman-api-tests-collection-run-with-docker-compose
+  	https://www.baeldung.com/docker-test-containers
+

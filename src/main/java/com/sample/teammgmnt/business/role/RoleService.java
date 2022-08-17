@@ -52,7 +52,7 @@ public class RoleService {
 
   public String delete(String name) {
     Optional<String> id = getRoleID(name);
-    if (id.isEmpty()) {
+    if (!id.isPresent()) {
       return "Role already deleted. Nothing was done";
     }
     roleRepository.deleteById(id.get());
